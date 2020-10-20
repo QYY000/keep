@@ -5,3 +5,9 @@
     <my-footer></my-footer>
   </div>
 </template>
+<script>
+import myFooter from '../components/Footer'
+export default {
+  components:{myFooter}
+}
+</script>

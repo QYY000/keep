@@ -60,38 +60,24 @@
             </mt-swipe>
           </div>
           <!-- 推荐计划 -->
-          <div class="all">
-            <div class="plain">
-            <div class="top">
-              <p>推荐计划</p>
-              <router-link to="'/">全部计划</router-link>
+          <div class="all" v-for="(p,i) of 3" :key="i">
+
+              <div class="plain" v-for="(p,i) of 4" :key="i">
+                <div class="top">
+                  <p>推荐计划</p>
+                  <router-link to="'/" class="fontsmall">全部计划</router-link>
+                </div>
+                <div class="bottom">
+                  <p>个性定制训练计划</p>
+                </div>
+
             </div>
-            <div class="bottom">
-              <p>个性定制训练计划</p>
-            </div>
-          </div>
-          <div class="plain">
-            <div class="top">
-              <p>推荐计划</p>
-              <router-link to="'/">全部计划</router-link>
-            </div>
-            <div class="bottom">
-              <p>个性定制训练计划</p>
-            </div>
-          </div>
-          <div class="plain">
-            <div class="top">
-              <p>推荐计划</p>
-              <router-link to="'/">全部计划</router-link>
-            </div>
-            <div class="bottom">
-              <p>个性定制训练计划</p>
-            </div>
-          </div>
           </div>
         </mt-tab-container-item>
         <!-- ————面板2   计划———— -->        
-        <mt-tab-container-item id="2">2222</mt-tab-container-item>
+        <mt-tab-container-item id="2">2222
+
+        </mt-tab-container-item>
         <!-- ————面板2   活动———— -->                
         <mt-tab-container-item id="3">3333</mt-tab-container-item>
       </mt-tab-container>
@@ -109,7 +95,8 @@
 </template>
 
 <style>
-/*顶部导航栏*/ 
+/*顶部导航栏*/
+
 .index .father{
   width: 100%;
   position: fixed;
@@ -209,47 +196,58 @@
 }
 /* 轮播图 */
 .index .home .slide{
-  width:100%;height: 130px;
+  width:100%;height: 100px;
   border-radius: 20%;
   margin: 14px 0;
 
 }
 .index .home .slide img{
-  max-height:8em ;
+  max-height:7em ;
   width: 100%;
 }
 /* 推荐计划 */
-
+.index .home .all{
+  overflow-x: auto;
+  display: flex;
+  justify-content: flex-start;
+}
 .index .home .plain{
-  padding: 10px 0;
-  margin: 10px 0;
+  width: 260px;
+  padding: 5px 5px;
+  margin: 5px 0;
+
 }
 .index .home .plain .top{
+  width: 260px;
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+  margin: 10px 0;
+}
+.index .home .plain .top p{
+  padding-left: 8px;
+  font-weight: bold
 }
 .index .home .plain .top a{
-  border: solid #707070 1px;
-  font-size: 12px;
-  border-radius: 30px;
-  padding: 5px;
+  padding-right: 10px;
+  padding-top: 8px
 }
 .index .home .plain .bottom p{
-  width: 100%;height: 200px;
+  height: 100px;
   color:#fff;
-  font-size: 25px;
-  font-size: normal;
+  font-size: 13px;
   text-align: center;
-  line-height:200px ;
-  border-radius: 10px;
+  line-height:100px ;
+  border-radius: 5px;
   background-image: url('../../public/img/index/slide_1.jpg');
+  background-repeat: no-repeat;
 }
 </style>
 
 <script>
+import myFooter from '../components/Footer'
 export default {
+  components:{myFooter},
   data(){
     return {
       active:"1"

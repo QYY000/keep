@@ -20,6 +20,9 @@
 </template>
 
 <style>
+.tabbar{
+    width: 100%;
+}
 .tabbar .mint-tabbar>.mint-tab-item{
     color: #707070
 }
@@ -39,17 +42,20 @@ export default {
     watch:{
         tabbar(value){
             if(value=='index'){
-                this.$router.push('/')
                 this.tabbar='index'
-            }else if(value=='community'){
-                this.$router.push('/community')
+                this.$router.push('/')
+            }
+             if(value=='community'){
                 this.tabbar='community'
-            }else if(value=='sport'){
-                this.$router.push('/sport')
+                this.$router.push('/community')
+            }
+            if(value=='sport'){
                 this.tabbar='sport'
-            }else {
-                this.$router.push('/me')
+                this.$router.push('/sport')
+            }
+            if(value=='me') {
                 this.tabbar='me'
+                this.$router.push('/me')
             }
         }
     }
