@@ -42,19 +42,15 @@ export default {
     watch:{
         tabbar(value){
             if(value=='index'){
-                this.tabbar='index'
                 this.$router.push('/')
             }
              if(value=='community'){
-                this.tabbar='community'
                 this.$router.push('/community')
             }
             if(value=='sport'){
-                this.tabbar='sport'
                 this.$router.push('/sport')
             }
             if(value=='me') {
-                this.tabbar='me'
                 this.$router.push('/me')
             }
         }

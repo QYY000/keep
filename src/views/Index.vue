@@ -29,20 +29,20 @@
           <div class="circle">
             <div class="circle_icon1">
               <ul>
-                <li><img src="../../public/img/index/kecheng_2.png"> <p class="fontSmall">找课程</p> </li>
-                <li><img src="../../public/img/index/kecheng.svg"><p class="fontSmall">找课程</p> </li>
-                <li><img src="../../public/img/index/fire.svg"><p class="fontSmall">找课程</p> </li>
-                <li><img src="../../public/img/index/naozhong.svg"><p class="fontSmall">找课程</p> </li>
-                <li><img src="../../public/img/index/shipin.svg"><p class="fontSmall">找课程</p> </li>
+                <li><img src="../../public/img/index/kecheng_2.png"> <p class="fontsmall">找课程</p> </li>
+                <li><img src="../../public/img/index/kecheng.svg"><p class="fontsmall">找课程</p> </li>
+                <li><img src="../../public/img/index/fire.svg"><p class="fontsmall">找课程</p> </li>
+                <li><img src="../../public/img/index/naozhong.svg"><p class="fontsmall">找课程</p> </li>
+                <li><img src="../../public/img/index/shipin.svg"><p class="fontsmall">找课程</p> </li>
               </ul>
             </div>
             <div class="circle_icon2">
               <ul>
-                <li><img src="../../public/img/index/fuji.svg"></li>
-                <li><img src="../../public/img/index/meirong.svg"></li>
-                <li><img src="../../public/img/index/shouyao.svg"></li>
-                <li><img src="../../public/img/index/tunbu.svg"></li>
-                <li><img src="../../public/img/index/zengji.svg"></li>
+                <li><img src="../../public/img/index/fuji.svg"><p class="fontsmall">腹肌</p></li>
+                <li><img src="../../public/img/index/meirong.svg"><p class="fontsmall">美容</p></li>
+                <li><img src="../../public/img/index/shouyao.svg"><p class="fontsmall">瘦腰</p></li>
+                <li><img src="../../public/img/index/tunbu.svg"><p class="fontsmall">丰臀</p></li>
+                <li><img src="../../public/img/index/zengji.svg"><p class="fontsmall">增肌</p></li>
               </ul>
             </div>
           </div>
@@ -60,9 +60,9 @@
             </mt-swipe>
           </div>
           <!-- 推荐计划 -->
-          <div class="all" v-for="(p,i) of 3" :key="i">
+          <div class="allplan" v-for="(p,i) of 1" :key="i">
 
-              <div class="plain" v-for="(p,i) of 4" :key="i">
+              <div class="plan" v-for="(p,i) of 4" :key="i">
                 <div class="top">
                   <p>推荐计划</p>
                   <router-link to="'/" class="fontsmall">全部计划</router-link>
@@ -73,10 +73,25 @@
 
             </div>
           </div>
-        </mt-tab-container-item>
-        <!-- ————面板2   计划———— -->        
-        <mt-tab-container-item id="2">2222
+        <!-- 推荐课程 -->
+        <div class="allvideo" v-for="(p,i) of 1" :key="i">
 
+              <div class="plan" v-for="(p,i) of 4" :key="i">
+                <div class="top">
+                  <p>直播课程</p>
+                  <router-link to="'/" class="fontsmall">全部计划</router-link>
+                </div>
+                <div class="bottom">
+                  <p>舒缓瑜伽 全身舒展</p>
+                </div>
+
+            </div>
+          </div>
+        </mt-tab-container-item>
+        
+        <!-- ————面板2   计划plan———— -->        
+        <mt-tab-container-item id="2">
+           <control-plan></control-plan>
         </mt-tab-container-item>
         <!-- ————面板2   活动———— -->                
         <mt-tab-container-item id="3">3333</mt-tab-container-item>
@@ -87,7 +102,6 @@
 
     <!--____________________________底部导航_______________________________--> 
     <div class="tabbar">
-      <my-footer></my-footer>
     </div>
     <!--____________________________底部导航_______________________________--> 
 
@@ -113,7 +127,7 @@
 }
 
 .index a{
-  color: #000;
+  color: #707070;
   text-decoration: none;
 }
 /*顶部选项卡*/ 
@@ -143,7 +157,8 @@
   height: 50px;
   border-radius: 50%;
   background-color: bisque;
-  text-align: center
+  text-align: center;
+  position: relative;
 }
 .index .circle_icon1 ul li:first-child{
   background-color: rgb(159, 172, 230);
@@ -166,9 +181,11 @@
   margin-top: 7px;
   color: #fff
 }
-.index .circle_icon1 ul li .fontSmall{
-  margin: 20px 0;
-  color: #707070
+.index .circle_icon1 ul li>p{
+  color: #707070;
+  position: absolute;
+  top: 60px;
+  left: 7px
 }
 /*图标2*/ 
 .index .circle_icon2 ul{
@@ -181,10 +198,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: bisque;
-  text-align: center
-}
-.index .circle_icon2 ul li{
+  text-align: center;
   background-color: #fff;
 }
 
@@ -198,56 +212,74 @@
 .index .home .slide{
   width:100%;height: 100px;
   border-radius: 20%;
-  margin: 14px 0;
+  margin-top: 40px;
+  margin-bottom: 20px
 
 }
 .index .home .slide img{
   max-height:7em ;
   width: 100%;
 }
-/* 推荐计划 */
-.index .home .all{
+/* 推荐计划+直播课程 */
+.index .home .allplan{
   overflow-x: auto;
   display: flex;
   justify-content: flex-start;
 }
-.index .home .plain{
+.index .home .allvideo{
+  overflow-x: auto;
+  display: flex;
+  justify-content: flex-start;
+}
+.index .home .plan{
   width: 260px;
   padding: 5px 5px;
   margin: 5px 0;
 
 }
-.index .home .plain .top{
+.index .home .plan .top{
   width: 260px;
   font-size: 14px;
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
 }
-.index .home .plain .top p{
+.index .home .plan .top p{
   padding-left: 8px;
   font-weight: bold
 }
-.index .home .plain .top a{
+.index .home .plan .top a{
   padding-right: 10px;
   padding-top: 8px
 }
-.index .home .plain .bottom p{
+.index .home .allplan .plan .bottom p{
   height: 100px;
   color:#fff;
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
   line-height:100px ;
   border-radius: 5px;
-  background-image: url('../../public/img/index/slide_1.jpg');
+  background-image: url('../../public/img/index/allplan.jpg');
   background-repeat: no-repeat;
+  background-size: cover;
+}
+.index .home .allvideo .plan .bottom p{
+  height: 100px;
+  color:#fff;
+  font-size: 14px;
+  text-align: center;
+  line-height:100px ;
+  border-radius: 5px;
+  background-image: url('../../public/img/index/allvideo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
 
 <script>
-import myFooter from '../components/Footer'
+import controlPlan from '../components/IndexControl2'
 export default {
-  components:{myFooter},
+  components:{controlPlan},
   data(){
     return {
       active:"1"
