@@ -1,12 +1,12 @@
 <template>
-    <div class="control2">
+    <div class="control2" >
         <div class="header">
             <div>
                 <p>训练计划+饮食指导</p>
             </div>
         </div>
  <!--————index————控制面板2————图文循环部分  -->
-        <div class="imgtext" v-for="(p,i) of 5" :key='i'>
+        <div class="imgtext">
             <h>个性定制训练计划</h>
         </div>
         <mt-button type="primary" size="large">开通会员</mt-button>

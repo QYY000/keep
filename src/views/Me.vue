@@ -5,9 +5,13 @@
     <mt-header class="header">
       <div class="header_left" slot="left">我</div>
       <div class="header_right" slot="right">
-          <router-link to="/reg">
-          <img src="../../public/img/me/Group-.png" >         
+          <router-link to="/me">
+          <img src="../../public/img/me/Group-.png" >
+          </router-link>
+          <router-link to="/login">           
           <img src="../../public/img/me/saoyisao.png" > 
+          </router-link>
+          <router-link to="/community">
           <img src="../../public/img/me/message.png" > 
           </router-link>
       </div>
@@ -33,5 +37,8 @@
   font-size: 20px;
   color: #000;
 }
-
+.me .header .header_right a{
+  display: inline-block;
+  margin:0 5px
+}
 </style>

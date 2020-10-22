@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index" >
     <div class="father">
     <!-- ___________________________顶部导航栏__________________________ -->
     <mt-header class="header" v-model="active">
@@ -60,9 +60,9 @@
             </mt-swipe>
           </div>
           <!-- 推荐计划 -->
-          <div class="allplan" v-for="(p,i) of 1" :key="i">
+          <div class="allplan">
 
-              <div class="plan" v-for="(p,i) of 4" :key="i">
+              <div class="plan">
                 <div class="top">
                   <p>推荐计划</p>
                   <router-link to="'/" class="fontsmall">全部计划</router-link>
@@ -74,9 +74,9 @@
             </div>
           </div>
         <!-- 推荐课程 -->
-        <div class="allvideo" v-for="(p,i) of 1" :key="i">
+        <div class="allvideo" >
 
-              <div class="plan" v-for="(p,i) of 4" :key="i">
+              <div class="plan">
                 <div class="top">
                   <p>直播课程</p>
                   <router-link to="'/" class="fontsmall">全部计划</router-link>
@@ -277,8 +277,9 @@
 </style>
 
 <script>
-import controlPlan from '../components/IndexControl2'
+import controlPlan from '../components/Indexcontrol.vue'
 export default {
+  name:'index',
   components:{controlPlan},
   data(){
     return {

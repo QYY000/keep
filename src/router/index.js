@@ -4,6 +4,7 @@ import Index from '../views/Index.vue'
 Vue.use(VueRouter)
 
 const routes = [
+
   {
     path: '/reg',
     component: () => import(/* webpackChunkName: "reg" */ '../views/Register.vue')
@@ -32,7 +33,6 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode:'history',
   routes
 })
 export default router
