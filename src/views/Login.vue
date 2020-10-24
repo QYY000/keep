@@ -41,7 +41,7 @@
         ></mt-field>
         <!-- 注册按钮 -->
         <div class="button">
-            <mt-button type="primary" size="large" @click="login()" :class="{show:show,off:off}">登录</mt-button>
+            <mt-button type="primary" size="large" @click="login()" :class="{show:show,off:off}" >登录</mt-button>
         </div>
         <!-- 忘记密码 -->
         <div class="forget">
@@ -53,7 +53,7 @@
         <div class="weixin" @click="ohtersLogin">
             <div class="qq">
                 <img src="../../public/img/qq.png" >
-                <div class="code"  v-show="others">
+                <div class="code"  v-show="others">  <!--添加蒙层（遮罩）-->
                     <p>扫码登录</p>
                     <img src="../../public/img/code.svg">
                 </div>
@@ -169,16 +169,30 @@ export default {
             off:true,
             // 登录方式
             others:false
+
         }
     },
     methods:{
         login(){
-            console.log(this.username+this.password+"可以向服务器发送请求")
-            // 如果登录成功跳转到首页
-            this.$router.push('/')
+            // console.log(this.username+this.password+"可以向服务器发送请求")
+            this.axios.get('/login',{
+                params:{
+                    username:this.username,
+                    password:this.password
+                    }
+            }).then(res=>{
+                console.log(res)
+                if(res.data.code==1){
+                    console.log('登录成功')
+                    this.$router.push('/')
+                }else{
+                    console.log("用户名或密码错误！")
+                    this.$toast("用户名或密码错误")
+                }
+            })
         },
         usernameTest(){
-            let usernameRegExp=/^[0-9A-Za-z]{6,12}$/;
+            let usernameRegExp=/^[0-9A-Za-z]{4,12}$/;
             if(this.username==''){
                 this.$toast('用户名不能为空')
             }else{
@@ -196,7 +210,7 @@ export default {
             if(this.password==''){
                 this.$toast('密码不能为空')
             }else{
-                let passwordRegExp=/^[0-9A-Za-z]{6,12}$/;
+                let passwordRegExp=/^[0-9A-Za-z]{4,12}$/;
             if(passwordRegExp.test(this.password)){
                 this.passwordState='success'
                 this.show=true 
@@ -216,6 +230,7 @@ export default {
                 this.others==true ? this.others=false : this.others=true 
             }
         }
-    }
+    },
+
 }
 </script>

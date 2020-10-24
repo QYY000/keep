@@ -7,11 +7,10 @@
         </div>
  <!--————index————控制面板2————图文循环部分  -->
         <div class="imgtext">
-            <h>个性定制训练计划</h>
+            <h3>个性定制训练计划</h3>
         </div>
-        <mt-button type="primary" size="large">开通会员</mt-button>
+        <mt-button type="primary" size="large" class="member">开通会员</mt-button>
     </div>
-    
 </template>
 
 <style>
@@ -49,7 +48,7 @@
     font-size: 18px;
     font-family: '宋体'
 }
-.control2 .imgtext h{
+.control2 .imgtext h3{
     letter-spacing: 3px
 }
 /*按钮样式*/
@@ -60,6 +59,14 @@
     border-radius: 30px;
     position: fixed;
     bottom: 70px;
-    left: 25%
+    left: 25%;
 } 
+@keyframes member{
+    0%{transform: scale(1)}
+    50%{transform: scale(1.05)}
+    100%{transform: scale(1)}
+}
+.member{
+    animation: member .8s infinite;
+}
 </style>

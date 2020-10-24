@@ -22,7 +22,6 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
     font-family: 'Microsoft Yahei';
-    white-space: nowrap;
     letter-spacing: 1px;
     text-decoration: none
 }
