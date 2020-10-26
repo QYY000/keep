@@ -123,14 +123,25 @@ export default {
                 this.$toast('用户名不能为空')
             }else{
                 if(usernameRegExp.test(this.username)){
-                this.usernameState='success'
-            }else{
-                this.$toast({
-                    message:"用户名格式错误"
-                })
-                this.usernameState='error'                
+                    // 向服务器发送请求，判断用户名是否已经存在
+                     this.axios.get(`/usertest?uname=${this.username}`).then(results=>{
+                        if(results.data.code==0){
+                             //  如果返回的是0，则说明用户名已经存在
+                            this.$toast("该用户名已被注册！")
+                            this.usernameState='error'  
+                        }
+                        if(results.data.code==1){
+                            this.usernameState='success'
+                        }
+                    })
+                 }else{
+                    this.$toast({
+                        message:"用户名格式错误"
+                    })
+                }
+            this.usernameState='error'                
             }
-            }
+            
         },
         passwordTest(){
             if(this.upwd==''){
@@ -159,12 +170,23 @@ export default {
                    this.conpasswordState='success'
                     this.show=true
             }
-            }
+            } 
 
         },
         register(){
-            console.log('用户名：'+this.username+'密码：'+this.password+'可以向服务器传递数据')
-            this.$router.push('/login')
+            console.log(this.username,this.upwd)
+            // this.axios.post('/register',`uname=${this.username}&upwd=${this.upwd}`)
+            this.axios.post('/register',this.qs.stringify({
+                uname:this.username,
+                upwd:this.upwd
+            }))            
+            .then(res=>{
+                console.log(res)
+                this.$router.push('/login')
+                this.$toast("注册成功")
+            })
+            
+            
         }
     }
 }

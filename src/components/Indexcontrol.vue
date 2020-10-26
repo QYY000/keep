@@ -6,7 +6,7 @@
             </div>
         </div>
  <!--————index————控制面板2————图文循环部分  -->
-        <div class="imgtext">
+        <div class="imgtext" v-for="(p,i) of 4" :key="i">
             <h3>个性定制训练计划</h3>
         </div>
         <mt-button type="primary" size="large" class="member">开通会员</mt-button>

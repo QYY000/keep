@@ -183,10 +183,11 @@ export default {
             }).then(res=>{
                 console.log(res)
                 if(res.data.code==1){
-                    console.log('登录成功')
+                    // console.log('登录成功')
                     this.$router.push('/')
+                    // 用户登录成功之后，将登录成功的状态isLogin=true
                 }else{
-                    console.log("用户名或密码错误！")
+                    // console.log("用户名或密码错误！")
                     this.$toast("用户名或密码错误")
                 }
             })

@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import MintUI from 'mint-ui'
+import qs from 'qs'
 import 'mint-ui/lib/style.min.css'
 import '../public/css/my_mint.scss'
 import Footer from './components/Footer.vue'
@@ -10,6 +11,7 @@ import Footer from './components/Footer.vue'
 import axios from 'axios'
 Vue.config.productionTip = false
 Vue.prototype.axios=axios
+Vue.prototype.qs=qs
 axios.defaults.baseURL='/api'
 
 Vue.component('my-footer', Footer)

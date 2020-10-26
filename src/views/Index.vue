@@ -4,10 +4,14 @@
     <!-- ___________________________顶部导航栏__________________________ -->
     <mt-header class="header" v-model="active">
       <div class="header_left" slot="left">首页</div>
-      <div class="header_right" slot="right">
+      <div class="header_right" slot="right" v-if="isLogin">
+        <router-link to="/me">注销</router-link>
+      </div>
+      <div class="header_right" slot="right"  v-else>
           <router-link to="/reg">注册 | </router-link>
           <router-link to="/login">登录</router-link>    <!--localStorage存储用户登录的信息 ？？？？？？？？-->
       </div>                                              <!--做判断，状态为1则显示搜图标，为0显示登录-->
+      
     </mt-header>
     <!-- ___________________________顶部导航栏__________________________ -->
 
@@ -60,9 +64,9 @@
             </mt-swipe>
           </div>
           <!-- 推荐计划 -->
-          <div class="allplan">
+          <div class="allplan" >
 
-              <div class="plan">
+              <div class="plan" v-for="(p,i) of 4" :key="i">
                 <div class="top">
                   <p>推荐计划</p>
                   <router-link to="'/" class="fontsmall">全部计划</router-link>
@@ -76,7 +80,7 @@
         <!-- 推荐课程 -->
         <div class="allvideo" >
 
-              <div class="plan">
+              <div class="plan" v-for="(p,i) of 4" :key="i">
                 <div class="top">
                   <p>直播课程</p>
                   <router-link to="'/" class="fontsmall">全部计划</router-link>
