@@ -185,7 +185,14 @@ export default {
                 if(res.data.code==1){
                     // console.log('登录成功')
                     this.$router.push('/')
-                    // 用户登录成功之后，将登录成功的状态isLogin=true
+                    // 用户登录成功之后，将登录的帐号密码放入localStorage 并将成功的状态isLogin=true存入localStorage
+                    localStorage.setItem("username",this.username)
+                    localStorage.setItem("password",this.password)
+                    localStorage.setItem('isLogin',true)
+                    this.$router.push({
+                        name:'index'
+                    })
+                    
                 }else{
                     // console.log("用户名或密码错误！")
                     this.$toast("用户名或密码错误")

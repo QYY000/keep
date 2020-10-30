@@ -4,8 +4,8 @@
     <!-- ___________________________顶部导航栏__________________________ -->
     <mt-header class="header" v-model="active">
       <div class="header_left" slot="left">首页</div>
-      <div class="header_right" slot="right" v-if="isLogin">
-        <router-link to="/me">注销</router-link>
+      <div class="header_right" slot="right" v-if="isLogin" @click="destroyLogin">
+        <router-link to="/login" >注销</router-link>
       </div>
       <div class="header_right" slot="right"  v-else>
           <router-link to="/reg">注册 | </router-link>
@@ -66,7 +66,7 @@
           <!-- 推荐计划 -->
           <div class="allplan" >
 
-              <div class="plan" v-for="(p,i) of 4" :key="i">
+              <div class="plan">
                 <div class="top">
                   <p>推荐计划</p>
                   <router-link to="'/" class="fontsmall">全部计划</router-link>
@@ -80,7 +80,7 @@
         <!-- 推荐课程 -->
         <div class="allvideo" >
 
-              <div class="plan" v-for="(p,i) of 4" :key="i">
+              <div class="plan">
                 <div class="top">
                   <p>直播课程</p>
                   <router-link to="'/" class="fontsmall">全部计划</router-link>
@@ -287,7 +287,15 @@ export default {
   components:{controlPlan},
   data(){
     return {
-      active:"1"
+      active:"1",
+      // 从localStorage中获取isLogin登录状态
+      isLogin:localStorage.getItem("isLogin")
+    }
+  },
+  methods:{
+    destroyLogin(){
+      console.log(1111111)
+      localStorage.clear()
     }
   }
 }

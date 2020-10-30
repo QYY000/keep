@@ -17,6 +17,24 @@ axios.defaults.baseURL='/api'
 Vue.component('my-footer', Footer)
 Vue.use(MintUI)
 
+
+// 全局守卫?????????????????????
+router.beforeEach((to,from,next)=>{
+  if(to.path==='/community'||to.path==='/me'||to.path==='/sport'){
+    const user=localStorage.getItem('isLogin')
+    if(user){
+      next()
+    }else{
+      next('/login')
+    }
+  }
+  else{
+    next()
+  }
+})
+
+
+
 new Vue({
   router,
   store,
