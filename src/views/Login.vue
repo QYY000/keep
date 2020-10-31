@@ -162,6 +162,8 @@ export default {
         return {
             username:'',
             password:'',
+            nickname:'',
+            sex:'',
             usernameState:'',
             passwordState:' ',
             // 按钮颜色切换
@@ -169,6 +171,7 @@ export default {
             off:true,
             // 登录方式
             others:false
+
 
         }
     },
@@ -182,12 +185,17 @@ export default {
                     }
             }).then(res=>{
                 console.log(res)
+                
                 if(res.data.code==1){
                     // console.log('登录成功')
-                    this.$router.push('/')
+                    // 将从服务器请求回来的数据放入到当前页面使用
+                    this.nickname=res.data.results[0].nickname
+                    this.sex=res.data.results[0].sex
                     // 用户登录成功之后，将登录的帐号密码放入localStorage 并将成功的状态isLogin=true存入localStorage
                     localStorage.setItem("username",this.username)
                     localStorage.setItem("password",this.password)
+                    localStorage.setItem("nickname",this.nickname)
+                    localStorage.setItem("sex",this.sex)
                     localStorage.setItem('isLogin',true)
                     this.$router.push({
                         name:'index'

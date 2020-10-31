@@ -69,7 +69,9 @@
               <div class="plan">
                 <div class="top">
                   <p>推荐计划</p>
-                  <router-link to="'/" class="fontsmall">全部计划</router-link>
+                  <slot-btn>
+                    <template v-slot:button>全部计划</template>
+                  </slot-btn>
                 </div>
                 <div class="bottom">
                   <p>个性定制训练计划</p>
@@ -83,7 +85,9 @@
               <div class="plan">
                 <div class="top">
                   <p>直播课程</p>
-                  <router-link to="'/" class="fontsmall">全部计划</router-link>
+                  <slot-btn>
+                    <template v-slot:button>全部计划</template>
+                  </slot-btn>
                 </div>
                 <div class="bottom">
                   <p>舒缓瑜伽 全身舒展</p>
@@ -282,9 +286,10 @@
 
 <script>
 import controlPlan from '../components/Indexcontrol.vue'
+import slotBtn from '../components/Button'
 export default {
   name:'index',
-  components:{controlPlan},
+  components:{controlPlan,slotBtn},
   data(){
     return {
       active:"1",

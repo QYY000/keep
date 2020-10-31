@@ -4,7 +4,11 @@ import Index from '../views/Index.vue'
 Vue.use(VueRouter)
 
 const routes = [
- 
+  {
+    path: '/notes',
+    name:'notes',
+    component: () => import(/* webpackChunkName: "notes" */ '../components/Notes.vue')
+  },
   {
     path: '/details',
     name:'details',

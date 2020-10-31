@@ -13,5 +13,7 @@
     background-color: #fff;
     outline: none;
     padding: 0;margin: 0;
+    font-size: 10px;
+    color: #707070;
 }
 </style>

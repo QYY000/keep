@@ -21,7 +21,8 @@
           乐活达人
         </span>
         </div>
-        <button>关注</button>
+        <button v-if="isAttention" @click="attention" class="white">已关注</button>
+        <button v-else @click="attention"  class="green">关注</button>
       </div>
       <!-- 动态内容 -->
       <div class="article_text">
@@ -36,7 +37,7 @@
        越强，中国人民众志成城、攻坚克难，最终取得抗美援朝
        战争胜利的伟大历程。
       </div>
-       <router-link to="/login">全部</router-link>
+       <router-link to="/details">全部</router-link>
       <!-- 照片 -->
       <div class="picture">
         <div class="img">
@@ -52,7 +53,7 @@
       <div class="comment">
         <span class="fontsmall">公告</span>
         <img src="../../public/img/community/gonggao (1).png" >
-        <router-link to='/login' >
+        <router-link to='/details' >
           <span class="fontsmall">评论</span>
           <img src="../../public/img/community/information.png" >     
         </router-link>
@@ -112,12 +113,21 @@
   margin-right: 10px
 }
 .community .article .article_top button{
+  border-radius: 18px;
+}
+.green{ 
   width: 60px;
   height: 30px;
+  border: none;
   background-color: lightgreen;
   color: #fff;
-  border: none;
-  border-radius: 18px;
+}
+.white{
+  width: 80px;
+  height: 26px;
+  border: solid 1px rgba(115, 115, 115, 0.2);
+  background-color: #fff;
+  color: #707070;
 }
 /*怎么实现多行文本省略号*/ 
 .community .article .article_text {
@@ -159,3 +169,32 @@ margin: 4px 1px;
 
 </style>
 
+<script>
+
+export default {
+  data(){
+    return {
+      isAttention:false,
+      task:1
+    }
+  },
+  methods:{
+    // 点击关注
+    attention(){
+      if(this.isAttention){
+        let cancelAttention=confirm('确定不再关注该用户？')
+        if(cancelAttention){
+          this.isAttention=false
+        }
+      }else{
+        this.isAttention=true
+        // 成功关注该用户，点击一次，传递1次参数
+        localStorage.setItem('attentionCount',this.task)
+        
+       
+      }
+    }
+  }
+  
+}
+</script>

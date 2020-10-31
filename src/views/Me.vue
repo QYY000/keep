@@ -19,8 +19,8 @@
     <!-- ___________________________顶部导航栏__________________________ -->
     </div>
     <!-- ___________________________控制面板__________________________ -->
-    <div class="top">
-
+    <div class="message">
+      <div class="top">
     </div>
     <div class="bottom">
       <div class="headerPic">
@@ -38,10 +38,46 @@
       </div>
       <!-- 昵称 -->
       <div class="username">
-        <h3>加油_小可爱呢</h3>
-        <div class="fontsmall">女</div>
+        <h2>{{nickname}}</h2>
+        <div class="fontsmall"><span>{{sex==1?'男':'女'}}</span><span>|</span><span>湖北</span></div>
+        <!-- 关注粉丝 -->
+        <ul>
+          <li>
+            <p>{{attentionCount}}</p>
+            <p>关注</p>
+          </li>
+          <li>
+            <p>0</p>
+            <p>粉丝</p>
+          </li>
+          <li>
+            <p>0</p>
+            <p>获赞</p>
+          </li>
+        </ul>
       </div>
-
+    </div>
+      <!-- 溢出隐藏的数据部分 -->
+      <div class="data"  >
+        <note-page class="note_page">
+          <template v-slot:image><img src="../../public/img/qq.png" ></template>
+          <template v-slot:title_target>目标记录本</template>
+          <template v-slot:title_h3>创建我的目标记录本</template>
+          <template v-slot:title_p>记下向目标前进的自己</template>
+        </note-page>
+        <note-page class="note_page">
+          <template v-slot:image><img src="../../public/img/wb.png" ></template>
+          <template v-slot:title_target>运动数据</template>
+          <template v-slot:title_h3>创建我的目标记录本</template>
+          <template v-slot:title_p>记下我的运动数据</template>
+        </note-page>
+         <note-page class="note_page">
+          <template v-slot:image><img src="../../public/img/wx.png" ></template>
+          <template v-slot:title_target>社区数据</template>
+          <template v-slot:title_h3>创建我的社区记录本</template>
+          <template v-slot:title_p>记下我的社区动态</template>
+        </note-page>
+      </div>
     </div>
     <!-- ___________________________控制面板__________________________ -->
   </div>
@@ -70,7 +106,7 @@
   margin-top: -50px;
 }
 .me .top{
-  width: 100%;height: 200px;
+  width: 100%;height: 150px;
   background-color: rgb(42, 35, 51);
 }
 .me .bottom .headerPic{
@@ -97,6 +133,7 @@
   top: 50%;
   right: 20px;
 }
+
 /* 用户信息昵称性别 */
 .me .bottom .username{
   margin-left: 10px;
@@ -105,11 +142,54 @@
 .me .bottom .updateMessage{
   color: #707070;
 }
+.me .username .fontsmall{
+  margin: 20px 0;
+}
+.me .username ul{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.me .username ul p{
+  margin-bottom: 10px;
+}
+.me  .data{
+  width: 100%;height: 292px;
+  margin-bottom: 55px;
+  overflow-y: auto;
+}
+/* 引入的插槽数据 */
+.me  .data .node_page{
+  margin-top: 10px;
+}
 </style>
 
 <script>
 import slotBtn from '../components/Button'
+import notePage from '../components/Notes'
 export default {
-  components:{slotBtn}
+  components:{slotBtn,notePage},
+  data(){
+    return {
+      nickname:localStorage.getItem('nickname'),
+      sex:localStorage.getItem('sex'),
+      isLogin:localStorage.getItem('isLogin'),
+      // 关注数量
+      attentionCount:0
+    }
+  },
+  created(){
+  //  this.bus.$on('attention',this.attention.bind(this))
+  //  console.log(this.bus)
+  // },
+  // methods:{
+  //   attention(task){
+  //     console.log(this.task)
+  //     this.attentionCount=this.task
+  //   }
+    this.attentionCount=localStorage.getItem("attentionCount")
+  }
+
 }
 </script>
