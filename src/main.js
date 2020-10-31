@@ -32,7 +32,10 @@ router.beforeEach((to,from,next)=>{
     next()
   }
 })
-
+// 在全局创建一个bus对象
+var bus=new Vue()
+export default bus;
+Vue.prototype.bus=bus
 
 
 new Vue({
